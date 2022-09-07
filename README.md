@@ -7,23 +7,23 @@
 ### ディレクトリ構成図例
 
 ```text
-├──components
-│   ├──App.tsx
-│   └──App.css
-├──config.json
-└──utils
-    └──converter.ts
+├─/components
+│  ├─App.tsx
+│  └─App.css
+├─config.json
+└─/utils
+    └─converter.ts
 ```
 
 ## DirTree 構造
 
 ```ts
 type DirNode = {
-  name: string;
-  children: DirNode[];
-};
+  name: string
+  children: DirNode[]
+}
 
-type DirTree = DirNode[];
+type DirTree = DirNode[]
 ```
 
 ## 使い方
@@ -31,7 +31,7 @@ type DirTree = DirNode[];
 ### TypeScript Module
 
 ```ts
-import { parse, converter, OptionType } from "dirTreeist";
+import { parse, converter, OptionType } from 'dirTreeist'
 
 const markdownList = `
 - components
@@ -40,23 +40,23 @@ const markdownList = `
 - config.json
 - utils
     - converter.ts
-`;
+`
 
-const dirTree = parse(markdownList); // markdown => DirTree
+const dirTree = parse(markdownList) // markdown => DirTree
 
-const options: OptionType = {};
-const output = converter(dirtree, options); // DirTree => output(like Demo)
+const options: OptionType = {}
+const output = converter(dirtree, options) // DirTree => output(like Demo)
 ```
 
 #### オプション
 
 ```ts
-type OptionType = {
-  treeType?: 1 | 2 | 3;
-  emptyBeforeUpperHierarche?: boolean;
-  spaceBeforeName?: boolean;
-  spaceSize?: boolean;
-};
+type Options = {
+  treeType?: 1 | 2 | 3
+  emptyBeforeUpperHierarche?: boolean
+  spaceBeforeName?: boolean
+  spaceSize?: number
+}
 ```
 
 ### CLI
@@ -82,13 +82,13 @@ dirTreeist <inputFile> [...options]
 
 ```text
 (true)
-├──components
-│   ├──App.tsx
-│   └──App.css
+├─/components
+│  ├─App.tsx
+│  └─App.css
 │
-├──config.json
-└──utils
-    └──converter.ts
+├─config.json
+└─/utils
+    └─converter.ts
 ```
 
 #### spaceBeforeName : boolean
@@ -97,13 +97,12 @@ dirTreeist <inputFile> [...options]
 
 ```text
 (true)
-├── components
-│   ├── App.tsx
-│   └── App.css
-│
-├── config.json
-└── utils
-    └── converter.ts
+├─ /components
+│  ├─ App.tsx
+│  └─ App.css
+├─ config.json
+└─ /utils
+    └─ converter.ts
 ```
 
 #### spaceSize : number
@@ -112,11 +111,10 @@ dirTreeist <inputFile> [...options]
 
 ```text
 (4)
-├──── components
+├────/components
 │    ├── App.tsx
 │    └── App.css
-│
 ├──── config.json
-└──── utils
+└────/utils
      └── converter.ts
 ```
