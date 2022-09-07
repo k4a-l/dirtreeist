@@ -1,6 +1,6 @@
 {
-  "name": "dirtreeist",
-  "version": "1.0.0",
+  "name": "@k4a_l/dirtreeist",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "author": "kasahala",
   "license": "MIT",
