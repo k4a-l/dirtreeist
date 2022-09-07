@@ -6,7 +6,7 @@ type DirNode = {
 type DirTree = DirNode[]
 
 type Options = {
-  treeType?: 1 | 2 | 3
+  treeType?: 'normal' | 'bold' | 'ascii'
   emptyBeforeUpperHierarche?: boolean
   spaceBeforeName?: boolean
   spaceSize?: number

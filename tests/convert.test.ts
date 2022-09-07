@@ -64,6 +64,37 @@ describe('only top', () => {
 })
 
 describe('options', () => {
+  test('treetype:1', () => {
+    expect(convert(dirTree, { treeType: 'normal' })).toBe(dedent`
+├─/components
+│  ├─App.tsx
+│  └─App.css
+├─config.json
+└─/utils
+    └─converter.ts`)
+  })
+
+  test('treetype:2', () => {
+    expect(convert(dirTree, { treeType: 'bold' })).toBe(dedent`
+┣━/components
+┃  ┣━App.tsx
+┃  ┗━App.css
+┣━config.json
+┗━━/utils
+    ┗━converter.ts`)
+  })
+
+  test('treetype:3', () => {
+    expect(convert(dirTree, { treeType: 'ascii' })).toBe(dedent`
+|-/components
+|  |-App.tsx
+|  +-App.css
+|
+|-config.json
++-/utils
+   +-converter.ts`)
+  })
+
   test('emptyLineBeforeUpperHierarchy:true', () => {
     expect(convert(dirTree, { emptyBeforeUpperHierarche: true })).toBe(dedent`
 ├─/components
@@ -92,6 +123,6 @@ describe('options', () => {
 │    └── App.css
 ├──── config.json
 └────/utils
-    └── converter.ts`)
+      └── converter.ts`)
   })
 })

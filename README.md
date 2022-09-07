@@ -52,7 +52,7 @@ const output = converter(dirtree, options) // DirTree => output(like Demo)
 
 ```ts
 type Options = {
-  treeType?: 1 | 2 | 3
+  treeType?: 'normal' | 'bold' | 'ascii'
   emptyBeforeUpperHierarche?: boolean
   spaceBeforeName?: boolean
   spaceSize?: number
@@ -68,13 +68,44 @@ dirTreeist <inputFile> [...options]
 #### オプション
 
 ```test
--t, --treeType [1|2|3]
+-t, --treeType ['normal'|'bold'|'ascii']
 -e, --empty [boolean]
 -space, --spaceBeforeName [boolean]
 -size, --spaceSize [number]
 ```
 
 ### オプションの説明
+
+#### treeType
+
+デフォルト値:normal
+
+normal
+
+```
+│
+├─
+│
+└─
+```
+
+bold
+
+```
+┃
+┣━
+┃
+┗━
+```
+
+ascii
+
+```
+|
++
+|
++-
+```
 
 #### emptyLineBeforeUpperHierarchy : boolean
 
@@ -102,7 +133,7 @@ dirTreeist <inputFile> [...options]
 │  └─ App.css
 ├─ config.json
 └─ /utils
-    └─ converter.ts
+│  └─ converter.ts
 ```
 
 #### spaceSize : number
