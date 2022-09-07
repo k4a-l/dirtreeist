@@ -31,7 +31,7 @@ type DirTree = DirNode[];
 ### TypeScript Module
 
 ```ts
-import { parser, converter, OptionType } from "dirTreeist";
+import { parse, converter, OptionType } from "dirTreeist";
 
 const markdownList = `
 - components
@@ -42,7 +42,7 @@ const markdownList = `
     - converter.ts
 `;
 
-const dirTree = parser(markdownList); // markdown => DirTree
+const dirTree = parse(markdownList); // markdown => DirTree
 
 const options: OptionType = {};
 const output = converter(dirtree, options); // DirTree => output(like Demo)
