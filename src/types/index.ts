@@ -5,11 +5,13 @@ type DirNode = {
 
 type DirTree = DirNode[]
 
-type Options = {
-  treeType?: 'normal' | 'bold' | 'ascii'
-  emptyBeforeUpperHierarche?: boolean
-  spaceBeforeName?: boolean
-  spaceSize?: number
+type OptionsBase = {
+  treeType: 'normal' | 'bold' | 'ascii'
+  emptyBeforeUpperHierarche: boolean
+  spaceBeforeName: boolean
+  spaceSize: number
 }
 
-export { DirTree, Options }
+type Options = Partial<OptionsBase>
+
+export { DirTree, Options, OptionsBase }

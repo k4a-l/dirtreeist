@@ -4,7 +4,7 @@ import { convert } from '../src/modules/convert'
 
 const dirTree: DirTree = [
   {
-    name: 'components',
+    name: '/components',
     children: [
       {
         name: 'App.tsx',
@@ -21,10 +21,14 @@ const dirTree: DirTree = [
     children: [],
   },
   {
-    name: 'utils',
+    name: '/utils',
     children: [
       {
         name: 'converter.ts',
+        children: [],
+      },
+      {
+        name: 'parser.ts',
         children: [],
       },
     ],
@@ -33,10 +37,23 @@ const dirTree: DirTree = [
 
 const dirTreeRoot: DirTree = [
   {
-    name: 'root',
+    name: '/root',
     children: dirTree,
   },
 ]
+
+describe('simple', () => {
+  test('success', () => {
+    expect(
+      convert([
+        { name: '/components', children: [] },
+        { name: '/utils', children: [] },
+      ])
+    ).toBe(dedent`
+  ├─/components
+  └─/utils`)
+  })
+})
 
 describe('multiple top', () => {
   test('success', () => {
@@ -46,20 +63,22 @@ describe('multiple top', () => {
 │  └─App.css
 ├─config.json
 └─/utils
-    └─converter.ts`)
+    ├─converter.ts
+    └─parser.ts`)
   })
 })
 
 describe('only top', () => {
   test('success', () => {
     expect(convert(dirTreeRoot)).toBe(dedent`
-/root
-├─/components
-│  ├─App.tsx
-│  └─App.css
-├─config.json
-└─/utils
-    └─converter.ts`)
+└─/root
+    ├─/components
+    │  ├─App.tsx
+    │  └─App.css
+    ├─config.json
+    └─/utils
+        ├─converter.ts
+        └─parser.ts`)
   })
 })
 
@@ -71,7 +90,8 @@ describe('options', () => {
 │  └─App.css
 ├─config.json
 └─/utils
-    └─converter.ts`)
+    ├─converter.ts
+    └─parser.ts`)
   })
 
   test('treetype:2', () => {
@@ -80,19 +100,20 @@ describe('options', () => {
 ┃  ┣━App.tsx
 ┃  ┗━App.css
 ┣━config.json
-┗━━/utils
-    ┗━converter.ts`)
+┗━/utils
+    ┣━converter.ts
+    ┗━parser.ts`)
   })
 
   test('treetype:3', () => {
     expect(convert(dirTree, { treeType: 'ascii' })).toBe(dedent`
-|-/components
-|  |-App.tsx
++-/components
+|  +-App.tsx
 |  +-App.css
-|
-|-config.json
++-config.json
 +-/utils
-   +-converter.ts`)
+   +-converter.ts
+   +-parser.ts`)
   })
 
   test('emptyLineBeforeUpperHierarchy:true', () => {
@@ -103,7 +124,8 @@ describe('options', () => {
 │
 ├─config.json
 └─/utils
-    └─converter.ts`)
+    ├─converter.ts
+    └─parser.ts`)
   })
 
   test('spaceBeforeName:true', () => {
@@ -113,16 +135,37 @@ describe('options', () => {
 │  └─ App.css
 ├─ config.json
 └─ /utils
-    └─ converter.ts`)
+    ├─ converter.ts
+    └─ parser.ts`)
   })
 
-  test('spaceBeforeName:true', () => {
+  test('spaceSize:4', () => {
     expect(convert(dirTree, { spaceSize: 4 })).toBe(dedent`
-├────/components
-│    ├── App.tsx
-│    └── App.css
-├──── config.json
-└────/utils
-      └── converter.ts`)
+├──/components
+│    ├──App.tsx
+│    └──App.css
+├──config.json
+└──/utils
+      ├──converter.ts
+      └──parser.ts`)
+  })
+
+  test('full option', () => {
+    expect(
+      convert(dirTree, {
+        treeType: 'bold',
+        spaceSize: 4,
+        spaceBeforeName: true,
+        emptyBeforeUpperHierarche: true,
+      })
+    ).toBe(dedent`
+┣━━ /components
+┃    ┣━━ App.tsx
+┃    ┗━━ App.css
+┃
+┣━━ config.json
+┗━━ /utils
+      ┣━━ converter.ts
+      ┗━━ parser.ts`)
   })
 })

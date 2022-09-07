@@ -34,11 +34,11 @@ type DirTree = DirNode[]
 import { parse, converter, OptionType } from 'dirTreeist'
 
 const markdownList = `
-- components
+- /components
     - App.tsx
     - App.css
 - config.json
-- utils
+- /utils
     - converter.ts
 `
 
@@ -142,10 +142,10 @@ ascii
 
 ```text
 (4)
-├────/components
+├──/components
 │    ├── App.tsx
 │    └── App.css
-├──── config.json
-└────/utils
+├── config.json
+└──/utils
      └── converter.ts
 ```

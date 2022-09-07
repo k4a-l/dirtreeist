@@ -3,5 +3,5 @@
   "singleQuote": true,
   "htmlWhitespaceSensitivity": "ignore",
   "endOfLine": "auto",
-  "printWidth": 100
+  "printWidth": 80
 }
