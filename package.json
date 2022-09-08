@@ -1,6 +1,6 @@
 {
   "name": "@k4a_l/dirtreeist",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "kasahala",
@@ -9,7 +9,8 @@
     "dev": "ts-node-dev --respawn src/index.ts",
     "build": "rm -rf ./dist/  && tsc",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "publsh": "build && npm publish --access=public"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
