@@ -12,6 +12,14 @@ type OptionsBase = {
   spaceSize: number
 }
 
+type SymbolSet = {
+  vertical: string
+  horizontal: string
+  crossing: string
+  end: string
+  space: string
+}
+
 type Options = Partial<OptionsBase>
 
-export { DirTree, Options, OptionsBase }
+export { DirTree, Options, OptionsBase, SymbolSet }

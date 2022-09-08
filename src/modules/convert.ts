@@ -1,38 +1,5 @@
-import { DirTree, Options, OptionsBase } from 'types/index'
-
-type SymbolSet = {
-  vertical: string
-  horizontal: string
-  crossing: string
-  end: string
-  space: string
-}
-
-const symbolSets: {
-  [key in OptionsBase['treeType']]: SymbolSet
-} = {
-  normal: {
-    vertical: '│',
-    horizontal: '─',
-    crossing: '├',
-    end: '└',
-    space: '  ',
-  },
-  bold: {
-    vertical: '┃',
-    horizontal: '━',
-    crossing: '┣',
-    end: '┗',
-    space: '  ',
-  },
-  ascii: {
-    vertical: '|',
-    horizontal: '-',
-    crossing: '+',
-    end: '+',
-    space: ' ',
-  },
-}
+import { symbolSets, defaultOptions } from 'constants/constant'
+import { DirTree, Options, OptionsBase, SymbolSet } from 'types/index'
 
 const makeSymbol = (symbolSet: SymbolSet, isLast: boolean): string => {
   if (isLast) return symbolSet.end
@@ -92,15 +59,27 @@ const reduce = (
   return result.slice(0, hie === 0 ? -1 : result.length)
 }
 
-const convert = (dirTree: DirTree, options?: Options): string => {
-  const defaultOptions: OptionsBase = {
-    treeType: options?.treeType ?? 'normal',
-    spaceBeforeName: options?.spaceBeforeName ?? false,
-    spaceSize: options?.spaceSize ?? 2,
-    emptyBeforeUpperHierarche: options?.emptyBeforeUpperHierarche ?? false,
-  }
+const pickOption = <T>(
+  option: Options | undefined,
+  defaultOption: OptionsBase,
+  key: keyof OptionsBase
+): T => {
+  if (option === undefined) return defaultOptions[key] as T
+  if (option[key] !== undefined) return option[key] as T
+  return defaultOption[key] as T
+}
 
-  return reduce(dirTree, defaultOptions, '', 0, false)
+const convert = (dirTree: DirTree, options?: Options): string => {
+  const passOptions = Object.fromEntries(
+    Object.entries(defaultOptions).map(([key, value]) => {
+      return [
+        key,
+        pickOption(options, defaultOptions, key as keyof OptionsBase),
+      ]
+    })
+  ) as OptionsBase
+
+  return reduce(dirTree, passOptions, '', 0, false)
 }
 
 export { convert }

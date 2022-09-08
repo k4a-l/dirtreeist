@@ -2,6 +2,6 @@ import { parse } from '../src/modules/parse'
 
 describe('convert', () => {
   test('success', () => {
-    expect(parse('')).toBe([])
+    expect(parse('')).toStrictEqual([])
   })
 })
