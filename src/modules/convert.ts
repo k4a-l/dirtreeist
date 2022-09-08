@@ -1,5 +1,6 @@
 import { symbolSets, defaultOptions } from 'constants/constant'
 import { DirTree, Options, OptionsBase, SymbolSet } from 'types/index'
+import { buildOption } from './options'
 
 const makeSymbol = (symbolSet: SymbolSet, isLast: boolean): string => {
   if (isLast) return symbolSet.end
@@ -59,27 +60,8 @@ const reduce = (
   return result.slice(0, hie === 0 ? -1 : result.length)
 }
 
-const pickOption = <T>(
-  option: Options | undefined,
-  defaultOption: OptionsBase,
-  key: keyof OptionsBase
-): T => {
-  if (option === undefined) return defaultOptions[key] as T
-  if (option[key] !== undefined) return option[key] as T
-  return defaultOption[key] as T
-}
-
 const convert = (dirTree: DirTree, options?: Options): string => {
-  const passOptions = Object.fromEntries(
-    Object.entries(defaultOptions).map(([key, value]) => {
-      return [
-        key,
-        pickOption(options, defaultOptions, key as keyof OptionsBase),
-      ]
-    })
-  ) as OptionsBase
-
-  return reduce(dirTree, passOptions, '', 0, false)
+  return reduce(dirTree, buildOption(options, defaultOptions), '', 0, false)
 }
 
 export { convert }
