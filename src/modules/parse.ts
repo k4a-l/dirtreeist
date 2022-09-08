@@ -1,6 +1,6 @@
 import { DirTree } from 'types/index'
 
-const parse = (chunk: string): DirTree => {
+const parse = (chunk: string): DirTree[] => {
   return []
 }
 

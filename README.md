@@ -13,6 +13,7 @@
 ├─config.json
 └─/utils
     └─converter.ts
+    └─parser.ts
 ```
 
 ## DirTree 構造
@@ -40,12 +41,13 @@ const markdownList = `
 - config.json
 - /utils
     - converter.ts
+    - parser.ts
 `
 
-const dirTree = parse(markdownList) // markdown => DirTree
+const dirTrees = parse(markdownList) // markdown => DirTree
 
 const options: OptionType = {}
-const output = converter(dirtree, options) // DirTree => output(like Demo)
+const outputs = dirTrees.map((dirTree) => converter(dirtree, options)) // DirTree => output(like Demo)
 ```
 
 #### オプション
@@ -120,6 +122,7 @@ ascii
 ├─config.json
 └─/utils
     └─converter.ts
+    └─parser.ts
 ```
 
 #### spaceBeforeName : boolean
@@ -133,7 +136,8 @@ ascii
 │  └─ App.css
 ├─ config.json
 └─ /utils
-│  └─ converter.ts
+    └─ converter.ts
+    └─ parser.ts
 ```
 
 #### spaceSize : number
@@ -143,9 +147,10 @@ ascii
 ```text
 (4)
 ├──/components
-│    ├── App.tsx
-│    └── App.css
-├── config.json
+│    ├──App.tsx
+│    └──App.css
+├──config.json
 └──/utils
-     └── converter.ts
+      └──converter.ts
+      └──parser.ts
 ```
