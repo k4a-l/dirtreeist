@@ -1,8 +1,16 @@
-import dedent from 'ts-dedent'
 import { DirTree } from 'types'
 import { parse } from '../src/modules/parse'
 
 import { describe, it, expect } from 'vitest'
+
+import {
+  includeExtraContent,
+  markdownListWithAstarisc,
+  multiList,
+  noList,
+  normalList,
+  // @ts-ignore
+} from './resource/markdown'
 
 const result: DirTree = [
   {
@@ -39,81 +47,22 @@ const result: DirTree = [
 
 describe('success', () => {
   it('normal', async () => {
-    const markdownList = dedent`
-- /components
-    - App.tsx
-    - App.css
-- config.json
-- /utils
-    - converter.ts
-    - parser.ts
-`
-
-    expect(await parse(markdownList)).toStrictEqual([result])
+    expect(await parse(normalList)).toStrictEqual([result])
   })
 
   it('use *', () => {
-    const markdownList = dedent`
-  * /components
-      * App.tsx
-      * App.css
-  * config.json
-  * /utils
-      * converter.ts
-      * parser.ts
-  `
-    expect(parse(markdownList)).toStrictEqual([result])
+    expect(parse(markdownListWithAstarisc)).toStrictEqual([result])
   })
 
-    it('Include extras ', () => {
-      const markdownList = dedent`
-  ## list
+  it('Include extras ', () => {
+    expect(parse(includeExtraContent)).toStrictEqual([result])
+  })
 
-  - /components
-      - App.tsx
-      - App.css
-  - config.json
-  - /utils
-      - converter.ts
-      - parser.ts
+  it('Muitl list ', () => {
+    expect(parse(multiList)).toStrictEqual([result, result])
+  })
 
-  ## next
-  `
-      expect(parse(markdownList)).toStrictEqual([result])
-    })
-
-    it('Muitl list ', () => {
-      const markdownList = dedent`
-  ## list
-
-  - /components
-      - App.tsx
-      - App.css
-  - config.json
-  - /utils
-      - converter.ts
-      - parser.ts
-
-  ## next
-
-  - /components
-      - App.tsx
-      - App.css
-  - config.json
-  - /utils
-      - converter.ts
-      - parser.ts
-  `
-      expect(parse(markdownList)).toStrictEqual([result, result])
-    })
-
-    it('No list ', () => {
-      const markdownList = dedent`
-  ## list
-
-  ## next
-
-  `
-      expect(parse(markdownList)).toStrictEqual([])
-    })
+  it('No list ', () => {
+    expect(parse(noList)).toStrictEqual([])
+  })
 })

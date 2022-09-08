@@ -34,7 +34,7 @@ type DirTree = DirNode[]
 ```ts
 import { parse, converter, OptionType } from 'dirTreeist'
 
-const markdownList = `
+const markdown = `
 - /components
     - App.tsx
     - App.css
@@ -44,10 +44,12 @@ const markdownList = `
     - parser.ts
 `
 
-const dirTrees = parse(markdownList) // markdown => DirTree
+const dirTrees = parse(markdown) // markdown => DirTree[]
 
 const options: OptionType = {}
-const outputs = dirTrees.map((dirTree) => converter(dirtree, options)) // DirTree => output(like Demo)
+const outputs = dirTrees.map((dirTree) => converter(dirtree, options)) // DirTree[] => output[]
+
+console.log(outputs)
 ```
 
 #### オプション
