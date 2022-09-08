@@ -49,71 +49,71 @@ describe('success', () => {
     - parser.ts
 `
 
-    expect(await parse(markdownList)).toStrictEqual([])
+    expect(await parse(markdownList)).toStrictEqual([result])
   })
 
-  //   it('use *', () => {
-  //     const markdownList = dedent`
-  // * /components
-  //     * App.tsx
-  //     * App.css
-  // * config.json
-  // * /utils
-  //     * converter.ts
-  //     * parser.ts
-  // `
-  //     expect(parse(markdownList)).toStrictEqual([result])
-  //   })
+  it('use *', () => {
+    const markdownList = dedent`
+  * /components
+      * App.tsx
+      * App.css
+  * config.json
+  * /utils
+      * converter.ts
+      * parser.ts
+  `
+    expect(parse(markdownList)).toStrictEqual([result])
+  })
 
-  //   it('Include extras ', () => {
-  //     const markdownList = dedent`
-  // ## list
+    it('Include extras ', () => {
+      const markdownList = dedent`
+  ## list
 
-  // - /components
-  //     - App.tsx
-  //     - App.css
-  // - config.json
-  // - /utils
-  //     - converter.ts
-  //     - parser.ts
+  - /components
+      - App.tsx
+      - App.css
+  - config.json
+  - /utils
+      - converter.ts
+      - parser.ts
 
-  // ## next
-  // `
-  //     expect(parse(markdownList)).toStrictEqual([result])
-  //   })
+  ## next
+  `
+      expect(parse(markdownList)).toStrictEqual([result])
+    })
 
-  //   it('Muitl list ', () => {
-  //     const markdownList = dedent`
-  // ## list
+    it('Muitl list ', () => {
+      const markdownList = dedent`
+  ## list
 
-  // - /components
-  //     - App.tsx
-  //     - App.css
-  // - config.json
-  // - /utils
-  //     - converter.ts
-  //     - parser.ts
+  - /components
+      - App.tsx
+      - App.css
+  - config.json
+  - /utils
+      - converter.ts
+      - parser.ts
 
-  // ## next
+  ## next
 
-  // - /components
-  //     - App.tsx
-  //     - App.css
-  // - config.json
-  // - /utils
-  //     - converter.ts
-  //     - parser.ts
-  // `
-  //     expect(parse(markdownList)).toStrictEqual([result, result])
-  //   })
+  - /components
+      - App.tsx
+      - App.css
+  - config.json
+  - /utils
+      - converter.ts
+      - parser.ts
+  `
+      expect(parse(markdownList)).toStrictEqual([result, result])
+    })
 
-  //   it('No list ', () => {
-  //     const markdownList = dedent`
-  // ## list
+    it('No list ', () => {
+      const markdownList = dedent`
+  ## list
 
-  // ## next
+  ## next
 
-  // `
-  //     expect(parse(markdownList)).toStrictEqual([])
-  //   })
+  `
+      expect(parse(markdownList)).toStrictEqual([])
+    })
 })
