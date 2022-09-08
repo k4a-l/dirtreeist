@@ -2,6 +2,8 @@ import dedent from 'ts-dedent'
 import { DirTree } from 'types'
 import { convert } from '../src/modules/convert'
 
+import { describe, it, expect } from 'vitest'
+
 const dirTree: DirTree = [
   {
     name: '/components',
@@ -43,7 +45,7 @@ const dirTreeRoot: DirTree = [
 ]
 
 describe('simple', () => {
-  test('success', () => {
+  it('success', () => {
     expect(
       convert([
         { name: '/components', children: [] },
@@ -56,7 +58,7 @@ describe('simple', () => {
 })
 
 describe('multiple top', () => {
-  test('success', () => {
+  it('success', () => {
     expect(convert(dirTree)).toBe(dedent`
 ├─/components
 │  ├─App.tsx
@@ -69,7 +71,7 @@ describe('multiple top', () => {
 })
 
 describe('only top', () => {
-  test('success', () => {
+  it('success', () => {
     expect(convert(dirTreeRoot)).toBe(dedent`
 └─/root
     ├─/components
@@ -83,7 +85,7 @@ describe('only top', () => {
 })
 
 describe('options', () => {
-  test('treetype:1', () => {
+  it('treetype:1', () => {
     expect(convert(dirTree, { treeType: 'normal' })).toBe(dedent`
 ├─/components
 │  ├─App.tsx
@@ -94,7 +96,7 @@ describe('options', () => {
     └─parser.ts`)
   })
 
-  test('treetype:2', () => {
+  it('treetype:2', () => {
     expect(convert(dirTree, { treeType: 'bold' })).toBe(dedent`
 ┣━/components
 ┃  ┣━App.tsx
@@ -105,7 +107,7 @@ describe('options', () => {
     ┗━parser.ts`)
   })
 
-  test('treetype:3', () => {
+  it('treetype:3', () => {
     expect(convert(dirTree, { treeType: 'ascii' })).toBe(dedent`
 +-/components
 |  +-App.tsx
@@ -116,7 +118,7 @@ describe('options', () => {
    +-parser.ts`)
   })
 
-  test('emptyLineBeforeUpperHierarchy:true', () => {
+  it('emptyLineBeforeUpperHierarchy:true', () => {
     expect(convert(dirTree, { emptyBeforeUpperHierarche: true })).toBe(dedent`
 ├─/components
 │  ├─App.tsx
@@ -128,7 +130,7 @@ describe('options', () => {
     └─parser.ts`)
   })
 
-  test('spaceBeforeName:true', () => {
+  it('spaceBeforeName:true', () => {
     expect(convert(dirTree, { spaceBeforeName: true })).toBe(dedent`
 ├─ /components
 │  ├─ App.tsx
@@ -139,7 +141,7 @@ describe('options', () => {
     └─ parser.ts`)
   })
 
-  test('spaceSize:4', () => {
+  it('spaceSize:4', () => {
     expect(convert(dirTree, { spaceSize: 4 })).toBe(dedent`
 ├──/components
 │    ├──App.tsx
@@ -150,7 +152,7 @@ describe('options', () => {
       └──parser.ts`)
   })
 
-  test('full option', () => {
+  it('full option', () => {
     expect(
       convert(dirTree, {
         treeType: 'bold',
