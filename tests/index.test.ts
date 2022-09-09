@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest'
 
 import dirtreest from '../src/index'
 
-// @ts-ignore
 import {
   multipleTop,
   oneTop,
@@ -12,13 +11,9 @@ import {
   spaceBeforeName,
   spaceSize4,
   fullOption,
-  // @ts-ignore
 } from './resource/output'
 
-import {
-  normalList,
-  // @ts-ignore
-} from './resource/markdown'
+import { normalList } from './resource/markdown'
 
 describe('multiple top', () => {
   it('success', () => {

@@ -1,4 +1,4 @@
-import dirtreeist, { parse, convert } from '../src/index'
+import dirtreeist, { parse, convert } from './index'
 
 const markdown = `
 - /components

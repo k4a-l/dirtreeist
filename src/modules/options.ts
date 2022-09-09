@@ -1,4 +1,4 @@
-import { defaultOptions } from 'constants/constant'
+import { defaultOptions } from 'constants/constant.js'
 import { Options, OptionsBase } from 'types'
 
 const pickOption = <T>(

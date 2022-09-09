@@ -16,6 +16,10 @@ yarn add @k4a_l/dirtreeist
 npm install @k4a_l/dirtreeist
 ```
 
+## Demo
+
+https://www.k4a.me/tools/dirtreeist
+
 ## Example
 
 ### Input

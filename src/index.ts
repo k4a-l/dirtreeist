@@ -1,5 +1,5 @@
-import { parse } from './modules/parse'
-import { convert } from './modules/convert'
+import { parse } from './modules/parse.js'
+import { convert } from './modules/convert.js'
 
 import { DirTree, Options } from './types/index'
 
