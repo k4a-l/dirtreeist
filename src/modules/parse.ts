@@ -5,6 +5,7 @@ import { fromMarkdown } from 'mdast-util-from-markdown'
 import { Content, ListItem, List } from 'mdast'
 
 const extractText = (content: Content): string => {
+  if (!content) return ''
   if (content.type === 'text') return content.value
 
   if ('children' in content) {
