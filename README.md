@@ -1,7 +1,23 @@
 # DirTreeist
+
 Create a directory Structure Diagram from a markdown lists.
 
+## Installation
+
+#### tarn
+
+```shell
+yarn add @k4a_l/dirtreeist
+```
+
+### npm
+
+```shell
+npm install @k4a_l/dirtreeist
+```
+
 ## Example
+
 ### Input
 
 ```markdown
