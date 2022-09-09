@@ -1,6 +1,6 @@
 {
   "name": "@k4a_l/dirtreeist",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "dist/index.js",
   "exports": {
     "import": "./dist/index.js",
@@ -15,7 +15,7 @@
     "clean": "rm -rf ./dist/ ",
     "build:esm": "tsc",
     "build:cjs": "rollup -c rollup.config.js",
-    "build": "yarn clean && yarn build:esm",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "deploy": "yarn build && yarn publish --access=public"
