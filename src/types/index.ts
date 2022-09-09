@@ -22,4 +22,4 @@ type SymbolSet = {
 
 type Options = Partial<OptionsBase>
 
-export { DirNode, DirTree, Options, OptionsBase, SymbolSet }
+export type { DirNode, DirTree, Options, OptionsBase, SymbolSet }

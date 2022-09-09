@@ -1,11 +1,8 @@
-import { convert } from '../src/modules/convert'
-import { parse } from '../src/modules/parse'
-
 import { describe, it, expect } from 'vitest'
 
-// @ts-ignore
-import { dirTree, dirTreeRoot } from './resource/ditTree'
+import dirtreest from '../src/index'
 
+// @ts-ignore
 import {
   multipleTop,
   oneTop,
@@ -19,63 +16,55 @@ import {
 } from './resource/output'
 
 import {
-  includeExtraContent,
-  markdownListWithAstarisc,
-  multiList,
-  noList,
   normalList,
   // @ts-ignore
 } from './resource/markdown'
 
 describe('multiple top', () => {
   it('success', () => {
-    expect(parse(normalList).map((list) => convert(dirTree))).toStrictEqual([
-      multipleTop,
-    ])
+    expect(dirtreest(normalList)).toStrictEqual([multipleTop])
   })
 })
 
-// describe('only top', () => {
-//   it('success', () => {
-//     expect(convert(dirTreeRoot)).toBe(oneTop)
-//   })
-// })
+describe('options', () => {
+  it('treetype:1', () => {
+    expect(dirtreest(normalList, { treeType: 'normal' })).toStrictEqual([
+      multipleTop,
+    ])
+  })
 
-// describe('options', () => {
-//   it('treetype:1', () => {
-//     expect(convert(dirTree, { treeType: 'normal' })).toBe(multipleTop)
-//   })
+  it('treetype:2', () => {
+    expect(dirtreest(normalList, { treeType: 'bold' })).toStrictEqual([bold])
+  })
 
-//   it('treetype:2', () => {
-//     expect(convert(dirTree, { treeType: 'bold' })).toBe(bold)
-//   })
+  it('treetype:3', () => {
+    expect(dirtreest(normalList, { treeType: 'ascii' })).toStrictEqual([ascii])
+  })
 
-//   it('treetype:3', () => {
-//     expect(convert(dirTree, { treeType: 'ascii' })).toBe(ascii)
-//   })
+  it('emptyLineBeforeUpperHierarchy:true', () => {
+    expect(
+      dirtreest(normalList, { emptyBeforeUpperHierarche: true })
+    ).toStrictEqual([emptyLineBeforeUpperHierarchy])
+  })
 
-//   it('emptyLineBeforeUpperHierarchy:true', () => {
-//     expect(convert(dirTree, { emptyBeforeUpperHierarche: true })).toBe(
-//       emptyLineBeforeUpperHierarchy
-//     )
-//   })
+  it('spaceBeforeName:true', () => {
+    expect(dirtreest(normalList, { spaceBeforeName: true })).toStrictEqual([
+      spaceBeforeName,
+    ])
+  })
 
-//   it('spaceBeforeName:true', () => {
-//     expect(convert(dirTree, { spaceBeforeName: true })).toBe(spaceBeforeName)
-//   })
+  it('spaceSize:4', () => {
+    expect(dirtreest(normalList, { spaceSize: 4 })).toStrictEqual([spaceSize4])
+  })
 
-//   it('spaceSize:4', () => {
-//     expect(convert(dirTree, { spaceSize: 4 })).toBe(spaceSize4)
-//   })
-
-//   it('full option', () => {
-//     expect(
-//       convert(dirTree, {
-//         treeType: 'bold',
-//         spaceSize: 4,
-//         spaceBeforeName: true,
-//         emptyBeforeUpperHierarche: true,
-//       })
-//     ).toBe(fullOption)
-//   })
-// })
+  it('full option', () => {
+    expect(
+      dirtreest(normalList, {
+        treeType: 'bold',
+        spaceSize: 4,
+        spaceBeforeName: true,
+        emptyBeforeUpperHierarche: true,
+      })
+    ).toStrictEqual([fullOption])
+  })
+})

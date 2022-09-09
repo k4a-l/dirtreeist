@@ -1,10 +1,20 @@
 # DirTreeist
+Create a directory Structure Diagram from a markdown lists.
 
-マークダウンのリスト構造や DirTree 構造からディレクトリ構成図を作成します。
+## Example
+### Input
 
-## Demo
+```markdown
+- /components
+  - App.tsx
+  - App.css
+- config.json
+- /utils
+  - converter.ts
+  - parser.ts
+```
 
-### ディレクトリ構成図例
+### Output
 
 ```text
 ├─/components
@@ -16,7 +26,47 @@
     └─parser.ts
 ```
 
-## DirTree 構造
+## How to use
+
+### TypeScript
+
+```ts
+const markdown = `
+- /components
+    - App.tsx
+    - App.css
+- config.json
+- /utils
+    - converter.ts
+    - parser.ts
+`
+```
+
+```tsx
+import dirtreest, { Options } from '@k4a_l/dirtreeist'
+
+const options: Options = {}
+const outputs = dirtreest(markdown, options) // DirTree[] => output[]
+
+console.log(outputs)
+```
+
+or
+
+```tsx
+import { parse, convert, Options } from '@k4a_l/dirtreeist'
+
+const dirTrees = parse(markdown) // markdown => DirTree[]
+
+const options: Options = {}
+const outputs = dirTrees.map((dirTree) => convert(dirTree, options)) // DirTree[] => output[]
+
+console.log(outputs)
+```
+
+### Type
+
+#### Structure
 
 ```ts
 type DirNode = {
@@ -27,32 +77,7 @@ type DirNode = {
 type DirTree = DirNode[]
 ```
 
-## 使い方
-
-### TypeScript Module
-
-```ts
-import { parse, converter, OptionType } from 'dirTreeist'
-
-const markdown = `
-- /components
-    - App.tsx
-    - App.css
-- config.json
-- /utils
-    - converter.ts
-    - parser.ts
-`
-
-const dirTrees = parse(markdown) // markdown => DirTree[]
-
-const options: OptionType = {}
-const outputs = dirTrees.map((dirTree) => converter(dirtree, options)) // DirTree[] => output[]
-
-console.log(outputs)
-```
-
-#### オプション
+#### Options
 
 ```ts
 type Options = {
@@ -63,28 +88,13 @@ type Options = {
 }
 ```
 
-### CLI
-
-```shell
-dirTreeist <inputFile> [...options]
-```
-
-#### オプション
-
-```test
--t, --treeType ['normal'|'bold'|'ascii']
--e, --empty [boolean]
--space, --spaceBeforeName [boolean]
--size, --spaceSize [number]
-```
-
-### オプションの説明
+### Description of options
 
 #### treeType
 
-デフォルト値:normal
+default:`normal`
 
-normal
+##### normal
 
 ```
 │
@@ -93,7 +103,7 @@ normal
 └─
 ```
 
-bold
+##### bold
 
 ```
 ┃
@@ -102,7 +112,7 @@ bold
 ┗━
 ```
 
-ascii
+##### ascii
 
 ```
 |
@@ -113,7 +123,9 @@ ascii
 
 #### emptyLineBeforeUpperHierarchy : boolean
 
-デフォルト値:false
+default:`false`
+
+##### true
 
 ```text
 (true)
@@ -129,10 +141,11 @@ ascii
 
 #### spaceBeforeName : boolean
 
-デフォルト値:false
+default: `false`
+
+##### true
 
 ```text
-(true)
 ├─ /components
 │  ├─ App.tsx
 │  └─ App.css
@@ -144,10 +157,11 @@ ascii
 
 #### spaceSize : number
 
-デフォルト値:2
+default:`2`
+
+##### 4
 
 ```text
-(4)
 ├──/components
 │    ├──App.tsx
 │    └──App.css
