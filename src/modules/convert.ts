@@ -25,7 +25,7 @@ const reduce = (
     const currentPrefix =
       prefix +
       symbol +
-      new Array(options.spaceSize / 2)
+      new Array(Math.floor(options.spaceSize / 2))
         .fill(symbolSet.horizontal)
         .reduce((prev, cur) => prev + cur, '')
 
