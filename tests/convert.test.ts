@@ -16,6 +16,7 @@ import {
   spaceSize10,
   fullOption,
   spaceSize11,
+  spaceSize11Ascii,
   // @ts-ignore
 } from './resource/output'
 
@@ -73,6 +74,12 @@ describe('options', () => {
 
   it('spaceSize:11', () => {
     expect(convert(dirTree, { spaceSize: 11 })).toBe(spaceSize11)
+  })
+
+  it('spaceSize:11 ascii', () => {
+    expect(convert(dirTree, { spaceSize: 11, treeType: 'ascii' })).toBe(
+      spaceSize11Ascii
+    )
   })
 
   it('full option', () => {

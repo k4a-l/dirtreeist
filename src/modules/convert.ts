@@ -25,7 +25,9 @@ const reduce = (
     const currentPrefix =
       prefix +
       symbol +
-      new Array(Math.floor(options.spaceSize / 2))
+      new Array(
+        Math.floor(options.spaceSize / (options.treeType === 'ascii' ? 1 : 2))
+      )
         .fill(symbolSet.horizontal)
         .reduce((prev, cur) => prev + cur, '')
 

@@ -29,13 +29,13 @@ export const bold = dedent`
     ┗━parser.ts`
 
 export const ascii = dedent`
-+-/components
-|  +-App.tsx
-|  +-App.css
-+-config.json
-+-/utils
-   +-converter.ts
-   +-parser.ts`
++--/components
+|  +--App.tsx
+|  +--App.css
++--config.json
++--/utils
+   +--converter.ts
+   +--parser.ts`
 
 export const emptyLineBeforeUpperHierarchy = dedent`
 ├─/components
@@ -74,6 +74,16 @@ export const spaceSize11 = dedent`
 └─────/utils
              ├─────converter.ts
              └─────parser.ts`
+
+
+export const spaceSize11Ascii = dedent`
++-----------/components
+|           +-----------App.tsx
+|           +-----------App.css
++-----------config.json
++-----------/utils
+            +-----------converter.ts
+            +-----------parser.ts`
 
 export const fullOption = dedent`
 ┣━━ /components
