@@ -1,11 +1,11 @@
+import { treeTypeValues } from "constants/constant.js"
+
 type DirNode = {
   name: string
   children: DirNode[]
 }
 
 type DirTree = DirNode[]
-
-const treeTypeValues = ['normal', 'bold', 'ascii']
 
 type OptionsBase = {
   treeType: typeof treeTypeValues[number]
@@ -25,5 +25,3 @@ type SymbolSet = {
 type Options = Partial<OptionsBase>
 
 export type { DirNode, DirTree, Options, OptionsBase, SymbolSet }
-
-export { treeTypeValues }
