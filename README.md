@@ -26,24 +26,24 @@ https://www.k4a.me/tools/dirtreeist
 
 ```markdown
 - /components
-  - App.tsx
-  - App.css
+　- App.tsx
+　- App.css
 - config.json
 - /utils
-  - converter.ts
-  - parser.ts
+　- converter.ts
+　- parser.ts
 ```
 
 ### Output
 
 ```text
 ├─/components
-│  ├─App.tsx
-│  └─App.css
+│　├─App.tsx
+│　└─App.css
 ├─config.json
 └─/utils
-    └─converter.ts
-    └─parser.ts
+　　└─converter.ts
+　　└─parser.ts
 ```
 
 ## How to use
@@ -53,12 +53,12 @@ https://www.k4a.me/tools/dirtreeist
 ```ts
 const markdown = `
 - /components
-    - App.tsx
-    - App.css
+　　- App.tsx
+　　- App.css
 - config.json
 - /utils
-    - converter.ts
-    - parser.ts
+　　- converter.ts
+　　- parser.ts
 `
 ```
 
@@ -90,8 +90,8 @@ console.log(outputs)
 
 ```ts
 type DirNode = {
-  name: string
-  children: DirNode[]
+　name: string
+　children: DirNode[]
 }
 
 type DirTree = DirNode[]
@@ -101,10 +101,10 @@ type DirTree = DirNode[]
 
 ```ts
 type Options = {
-  treeType?: 'normal' | 'bold' | 'ascii'
-  emptyBeforeUpperHierarche?: boolean
-  spaceBeforeName?: boolean
-  spaceSize?: number
+　treeType?: 'normal' | 'bold' | 'ascii'
+　emptyBeforeUpperHierarche?: boolean
+　spaceBeforeName?: boolean
+　spaceSize?: number
 }
 ```
 
@@ -150,13 +150,13 @@ default:`false`
 ```text
 (true)
 ├─/components
-│  ├─App.tsx
-│  └─App.css
+│　├─App.tsx
+│　└─App.css
 │
 ├─config.json
 └─/utils
-    └─converter.ts
-    └─parser.ts
+　　└─converter.ts
+　　└─parser.ts
 ```
 
 #### spaceBeforeName : boolean
@@ -167,12 +167,12 @@ default: `false`
 
 ```text
 ├─ /components
-│  ├─ App.tsx
-│  └─ App.css
+│　├─ App.tsx
+│　└─ App.css
 ├─ config.json
 └─ /utils
-    └─ converter.ts
-    └─ parser.ts
+　　└─ converter.ts
+　　└─ parser.ts
 ```
 
 #### spaceSize : number
@@ -183,10 +183,10 @@ default:`2`
 
 ```text
 ├──/components
-│    ├──App.tsx
-│    └──App.css
+│　　├──App.tsx
+│　　└──App.css
 ├──config.json
 └──/utils
-      └──converter.ts
-      └──parser.ts
+　　　└──converter.ts
+　　　└──parser.ts
 ```

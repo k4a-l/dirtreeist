@@ -7,6 +7,20 @@ const makeSymbol = (symbolSet: SymbolSet, isLast: boolean): string => {
   return symbolSet.crossing
 }
 
+const makeAsciiSpace = (spaceSize: number) => {
+  return new Array(spaceSize).fill(' ').reduce((prev, cur) => {
+    return prev + cur
+  }, '')
+}
+
+const makeSpace = (spaceSize: number) => {
+  return (
+    new Array(Math.floor(spaceSize / 2)).fill('　').reduce((prev, cur) => {
+      return prev + cur
+    }, '') + (spaceSize % 2 == 1 ? ' ' : '')
+  )
+}
+
 const reduce = (
   dirTree: DirTree,
   options: OptionsBase,
@@ -36,11 +50,11 @@ const reduce = (
     }`
 
     // 子
-    const spaces = new Array(options.spaceSize)
-      .fill(' ')
-      .reduce((prev, cur) => {
-        return prev + cur
-      }, '')
+    const spaces =
+      options.treeType === 'ascii'
+        ? makeAsciiSpace(options.spaceSize)
+        : makeSpace(options.spaceSize)
+
     const childrenLines = reduce(
       dirNode.children,
       options,

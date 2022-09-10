@@ -8,14 +8,14 @@ const symbolSets: {
     horizontal: '─',
     crossing: '├',
     end: '└',
-    space: '  ',
+    space: '　',
   },
   bold: {
     vertical: '┃',
     horizontal: '━',
     crossing: '┣',
     end: '┗',
-    space: '  ',
+    space: '　',
   },
   ascii: {
     vertical: '|',
