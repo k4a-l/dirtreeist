@@ -9,7 +9,7 @@ import {
   ascii,
   emptyLineBeforeUpperHierarchy,
   spaceBeforeName,
-  spaceSize4,
+  spaceSize10,
   fullOption,
 } from './resource/output'
 
@@ -48,8 +48,8 @@ describe('options', () => {
     ])
   })
 
-  it('spaceSize:4', () => {
-    expect(dirtreest(normalList, { spaceSize: 4 })).toStrictEqual([spaceSize4])
+  it('spaceSize:10', () => {
+    expect(dirtreest(normalList, { spaceSize: 10 })).toStrictEqual([spaceSize10])
   })
 
   it('full option', () => {

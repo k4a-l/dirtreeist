@@ -13,8 +13,9 @@ import {
   ascii,
   emptyLineBeforeUpperHierarchy,
   spaceBeforeName,
-  spaceSize4,
+  spaceSize10,
   fullOption,
+  spaceSize11,
   // @ts-ignore
 } from './resource/output'
 
@@ -66,8 +67,12 @@ describe('options', () => {
     expect(convert(dirTree, { spaceBeforeName: true })).toBe(spaceBeforeName)
   })
 
-  it('spaceSize:4', () => {
-    expect(convert(dirTree, { spaceSize: 4 })).toBe(spaceSize4)
+  it('spaceSize:10', () => {
+    expect(convert(dirTree, { spaceSize: 10 })).toBe(spaceSize10)
+  })
+
+  it('spaceSize:11', () => {
+    expect(convert(dirTree, { spaceSize: 11 })).toBe(spaceSize11)
   })
 
   it('full option', () => {

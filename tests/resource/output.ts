@@ -56,14 +56,24 @@ export const spaceBeforeName = dedent`
     ├─ converter.ts
     └─ parser.ts`
 
-export const spaceSize4 = dedent`
-├──/components
-│    ├──App.tsx
-│    └──App.css
-├──config.json
-└──/utils
-      ├──converter.ts
-      └──parser.ts`
+export const spaceSize10 = dedent`
+├─────/components
+│          ├─────App.tsx
+│          └─────App.css
+├─────config.json
+└─────/utils
+            ├─────converter.ts
+            └─────parser.ts`
+
+
+export const spaceSize11 = dedent`
+├─────/components
+│           ├─────App.tsx
+│           └─────App.css
+├─────config.json
+└─────/utils
+             ├─────converter.ts
+             └─────parser.ts`
 
 export const fullOption = dedent`
 ┣━━ /components
