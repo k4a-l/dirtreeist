@@ -32,7 +32,9 @@ const extractListItem = (listItem: ListItem): DirNode => {
   return { name, children: children }
 }
 
-const extractList = (list: List): DirTree => {
+const extractList = (list: Content): DirTree => {
+  if (list.type !== 'list') return []
+  if (!list.children) return []
   return list.children.map((listItem) => {
     return extractListItem(listItem)
   })
@@ -41,10 +43,14 @@ const extractList = (list: List): DirTree => {
 const parse = (chunk: string): DirTree[] => {
   const tree = fromMarkdown(chunk)
 
-  const lists = tree.children.filter((child) => child.type === 'list') as List[]
+  const lists = tree.children.filter((child) => child.type === 'list')
 
   const result = lists.map((list) => {
-    return extractList(list)
+    try {
+      return extractList(list)
+    } catch (error) {
+      return []
+    }
   })
 
   return result
