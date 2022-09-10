@@ -63,10 +63,10 @@ const markdown = `
 ```
 
 ```tsx
-import dirtreest, { Options } from '@k4a_l/dirtreeist'
+import dirtreeist, { Options } from '@k4a_l/dirtreeist'
 
 const options: Options = {}
-const outputs = dirtreest(markdown, options) // DirTree[] => output[]
+const outputs = dirtreeist(markdown, options) // DirTree[] => output[]
 
 console.log(outputs)
 ```

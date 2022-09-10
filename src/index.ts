@@ -3,10 +3,10 @@ import { convert } from './modules/convert.js'
 
 import { DirTree, Options } from './types/index'
 
-const dirtreest = (markdown: string, option?: Options) => {
+const dirtreeist = (markdown: string, option?: Options) => {
   return parse(markdown).map((dirtree) => convert(dirtree, option))
 }
 
 export { parse, convert }
-export default dirtreest
+export default dirtreeist
 export type { DirTree, Options }
