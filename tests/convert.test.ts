@@ -76,6 +76,14 @@ describe('options', () => {
     expect(convert(dirTree, { spaceSize: 11 })).toBe(spaceSize11)
   })
 
+  it('spaceSize:0', () => {
+    expect(convert(dirTree, { spaceSize: 0 })).toBe(multipleTop)
+  })
+
+  it('spaceSize:-1', () => {
+    expect(convert(dirTree, { spaceSize: -1 })).toBe(multipleTop)
+  })
+
   it('spaceSize:11 ascii', () => {
     expect(convert(dirTree, { spaceSize: 11, treeType: 'ascii' })).toBe(
       spaceSize11Ascii
@@ -91,5 +99,17 @@ describe('options', () => {
         emptyBeforeUpperHierarche: true,
       })
     ).toBe(fullOption)
+  })
+
+
+  it('invalid option', () => {
+    expect(
+      convert(dirTree, {
+        treeType: 'b',
+        spaceSize: -1,
+        spaceBeforeName: '',
+        emptyBeforeUpperHierarche: '',
+      })
+    ).toBe(multipleTop)
   })
 })

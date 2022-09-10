@@ -5,8 +5,10 @@ type DirNode = {
 
 type DirTree = DirNode[]
 
+const treeTypeValues = ['normal', 'bold', 'ascii']
+
 type OptionsBase = {
-  treeType: 'normal' | 'bold' | 'ascii'
+  treeType: typeof treeTypeValues[number]
   emptyBeforeUpperHierarche: boolean
   spaceBeforeName: boolean
   spaceSize: number
@@ -23,3 +25,5 @@ type SymbolSet = {
 type Options = Partial<OptionsBase>
 
 export type { DirNode, DirTree, Options, OptionsBase, SymbolSet }
+
+export { treeTypeValues }

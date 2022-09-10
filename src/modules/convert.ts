@@ -77,7 +77,11 @@ const reduce = (
 }
 
 const convert = (dirTree: DirTree, options?: Options): string => {
-  return reduce(dirTree, buildOption(options, defaultOptions), '', 0, false)
+  try {
+    return reduce(dirTree, buildOption(options, defaultOptions), '', 0, false)
+  } catch (error) {
+    return 'Some errors occurred!\n\n' + String(error) + '\n\n' + 'Please contact to developper.'
+  }
 }
 
 export { convert }
