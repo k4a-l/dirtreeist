@@ -1,4 +1,4 @@
-import { OptionsBase, SymbolSet } from 'types'
+import { OptionsBase, SymbolSet } from '../types'
 
 const symbolSets: {
   [key in OptionsBase['treeType']]: SymbolSet

@@ -1,5 +1,5 @@
-import { symbolSets, defaultOptions } from 'constants/constant.js'
-import { DirTree, Options, OptionsBase, SymbolSet } from 'types/index'
+import { symbolSets, defaultOptions } from '../constants/constant.js'
+import { DirTree, Options, OptionsBase, SymbolSet } from '../types/index'
 import { buildOption } from './options.js'
 
 const makeSymbol = (symbolSet: SymbolSet, isLast: boolean): string => {

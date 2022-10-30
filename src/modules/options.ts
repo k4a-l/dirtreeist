@@ -1,5 +1,5 @@
-import { defaultOptions, treeTypeValues } from 'constants/constant.js'
-import { Options, OptionsBase } from 'types'
+import { defaultOptions, treeTypeValues } from '../constants/constant.js'
+import { Options, OptionsBase } from '../types'
 
 const optionGuard = (value: any, defaultValue: any, key: keyof OptionsBase) => {
   if (key === 'spaceSize') {

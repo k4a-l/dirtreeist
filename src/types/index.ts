@@ -1,4 +1,4 @@
-import { treeTypeValues } from "constants/constant.js"
+import { treeTypeValues } from "../constants/constant.js"
 
 type DirNode = {
   name: string
