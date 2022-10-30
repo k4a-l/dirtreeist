@@ -33,6 +33,6 @@ const defaultOptions: OptionsBase = {
   emptyBeforeUpperHierarche: false,
 }
 
-const treeTypeValues = ['normal', 'bold', 'ascii']
+const treeTypeValues = ['normal', 'bold', 'ascii'] as const
 
 export { symbolSets, defaultOptions, treeTypeValues }
