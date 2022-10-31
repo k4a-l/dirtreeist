@@ -1,6 +1,6 @@
 {
   "name": "@k4a_l/dirtreeist",
-  "version": "0.2.12",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "exports": {
     ".": {
