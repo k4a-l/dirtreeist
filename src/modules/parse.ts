@@ -1,4 +1,4 @@
-import { DirNode, DirTree } from '../types/index'
+import { DirNode, DirTree } from 'types/index'
 
 import { fromMarkdown } from 'mdast-util-from-markdown'
 

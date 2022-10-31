@@ -101,13 +101,15 @@ describe('options', () => {
     ).toBe(fullOption)
   })
 
-
   it('invalid option', () => {
     expect(
       convert(dirTree, {
+        // @ts-ignore
         treeType: 'b',
         spaceSize: -1,
+        // @ts-ignore
         spaceBeforeName: '',
+        // @ts-ignore
         emptyBeforeUpperHierarche: '',
       })
     ).toBe(multipleTop)
