@@ -28,16 +28,15 @@ https://www.k4a.me/tools/dirtreeist
 
 ```markdown
 - /components
-　- App.tsx
-　- App.css
+  　- App.tsx
+  　- App.css
 - config.json
 - /utils
-　- converter.ts
-　- parser.ts
+  　- converter.ts
+  　- parser.ts
 ```
 
 #### Output
-
 
 ```text
 ├─/components
@@ -49,11 +48,42 @@ https://www.k4a.me/tools/dirtreeist
 　　└─parser.ts
 ```
 
+### Only one top
+
+#### Input
+
+```markdown
+- /root
+  - /components
+    　- App.tsx
+    　- App.css
+  - config.json
+  - /utils
+    　- converter.ts
+    　- parser.ts
+```
+
+#### Output
+
+```text
+/root
+├─/components
+│　├─App.tsx
+│　└─App.css
+├─config.json
+└─/utils
+　　├─converter.ts
+　　└─parser.ts
+```
+
 ### Sequential listings
 
 Consecutive lists are connected.
+
 #### Input
+
 ```
+
 - a
   - b
   - c
@@ -63,17 +93,22 @@ Consecutive lists are connected.
   - 2
     - 3
       - 4
+
 ```
+
 #### Output
+
 ```
+
 ├─ a
-│　├─ b
-│　└─ c
+│ 　 ├─ b
+│ 　 └─ c
 ├─ d
 └─ 1
-　　└─ 2
-　　　　└─ 3
-　　　　　　└─ 4
+　　 └─ 2
+　　　　 └─ 3
+　　　　　　 └─ 4
+
 ```
 
 ### Another element comes in between
@@ -81,6 +116,7 @@ Consecutive lists are connected.
 If another element is sandwiched in between, a "only" split lists is output.
 
 #### Input
+
 ```dirtree
 - a
   - b
@@ -95,14 +131,15 @@ sometext
       - 4
 ```
 
-
 #### Output
+
 ```
 ├─ a
 │　├─ b
 │　└─ c
 └─ d
 ```
+
 ```
 └─ 1
 　　└─ 2
@@ -154,8 +191,8 @@ console.log(outputs)
 
 ```ts
 type DirNode = {
-　name: string
-　children: DirNode[]
+  name: string
+  children: DirNode[]
 }
 
 type DirTree = DirNode[]
@@ -165,10 +202,10 @@ type DirTree = DirNode[]
 
 ```ts
 type Options = {
-　treeType?: 'normal' | 'bold' | 'ascii'
-　emptyBeforeUpperHierarche?: boolean
-　spaceBeforeName?: boolean
-　spaceSize?: number
+  treeType?: 'normal' | 'bold' | 'ascii'
+  emptyBeforeUpperHierarche?: boolean
+  spaceBeforeName?: boolean
+  spaceSize?: number
 }
 ```
 

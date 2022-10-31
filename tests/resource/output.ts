@@ -10,14 +10,25 @@ export const multipleTop = dedent`
 　　└─parser.ts`
 
 export const oneTop = dedent`
-└─/root
-　　├─/components
-　　│　├─App.tsx
-　　│　└─App.css
-　　├─config.json
-　　└─/utils
-　　　　├─converter.ts
-　　　　└─parser.ts`
+/root
+├─/components
+│　├─App.tsx
+│　└─App.css
+├─config.json
+└─/utils
+　　├─converter.ts
+　　└─parser.ts`
+
+
+export const oneTopAscii = dedent`
+/root
++--/components
+|  +--App.tsx
+|  +--App.css
++--config.json
++--/utils
+   +--converter.ts
+   +--parser.ts`
 
 export const bold = dedent`
 ┣━/components

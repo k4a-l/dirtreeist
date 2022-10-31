@@ -32,33 +32,44 @@ const reduce = (
   dirTree.some((dirNode, dirNodeIndex) => {
     // 準備
     const isLast = dirNodeIndex == dirTree.length - 1
+    const isOneTop = hie === 0 && dirTree.length === 1
     const symbolSet = symbolSets[options.treeType]
-    const symbol = makeSymbol(symbolSet, isLast)
 
     // 現在
-    const currentPrefix =
-      prefix +
-      symbol +
-      new Array(
-        Math.floor(options.spaceSize / (options.treeType === 'ascii' ? 1 : 2))
+    const makePrefix = () => {
+      if (isOneTop) return ''
+      return (
+        makeSymbol(symbolSet, isLast) +
+        new Array(
+          Math.floor(options.spaceSize / (options.treeType === 'ascii' ? 1 : 2))
+        )
+          .fill(symbolSet.horizontal)
+          .reduce((prev, cur) => prev + cur, '')
       )
-        .fill(symbolSet.horizontal)
-        .reduce((prev, cur) => prev + cur, '')
+    }
 
-    const currentLine = `${currentPrefix}${options.spaceBeforeName ? ' ' : ''}${
-      dirNode.name
-    }`
+    const currentLine = `${prefix + makePrefix()}${
+      options.spaceBeforeName ? ' ' : ''
+    }${dirNode.name}`
 
     // 子
-    const spaces =
-      options.treeType === 'ascii'
+    const makeNextSpaces = () => {
+      if (isOneTop) return ''
+      return options.treeType === 'ascii'
         ? makeAsciiSpace(options.spaceSize)
         : makeSpace(options.spaceSize)
+    }
+
+    const makeNextVertical = () => {
+      if (!isLast) return symbolSet.vertical
+      if (!isOneTop) return symbolSet.space
+      return ''
+    }
 
     const childrenLines = reduce(
       dirNode.children,
       options,
-      prefix + (isLast ? symbolSet.space : symbolSet.vertical) + spaces,
+      prefix + makeNextVertical() + makeNextSpaces(),
       hie + 1,
       isLastGroup || isLast
     )
@@ -80,7 +91,12 @@ const convert = (dirTree: DirTree, options?: Options): string => {
   try {
     return reduce(dirTree, buildOption(options, defaultOptions), '', 0, false)
   } catch (error) {
-    return 'Some errors occurred!\n\n' + String(error) + '\n\n' + 'Please contact to developper.'
+    return (
+      'Some errors occurred!\n\n' +
+      String(error) +
+      '\n\n' +
+      'Please contact to developper.'
+    )
   }
 }
 

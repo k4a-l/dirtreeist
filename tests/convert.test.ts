@@ -9,6 +9,7 @@ import { dirTree, dirTreeRoot } from './resource/ditTree'
 import {
   multipleTop,
   oneTop,
+  oneTopAscii,
   bold,
   ascii,
   emptyLineBeforeUpperHierarchy,
@@ -40,8 +41,12 @@ describe('multiple top', () => {
 })
 
 describe('only top', () => {
-  it('success', () => {
+  it('normal', () => {
     expect(convert(dirTreeRoot)).toBe(oneTop)
+  })
+
+  it('ascii', () => {
+    expect(convert(dirTreeRoot, { treeType: 'ascii' })).toBe(oneTopAscii)
   })
 })
 
