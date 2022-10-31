@@ -44,13 +44,12 @@ const reduce = (
           Math.floor(options.spaceSize / (options.treeType === 'ascii' ? 1 : 2))
         )
           .fill(symbolSet.horizontal)
-          .reduce((prev, cur) => prev + cur, '')
+          .reduce((prev, cur) => prev + cur, '') +
+        (options.spaceBeforeName ? ' ' : '')
       )
     }
 
-    const currentLine = `${prefix + makePrefix()}${
-      options.spaceBeforeName ? ' ' : ''
-    }${dirNode.name}`
+    const currentLine = `${prefix + makePrefix()}${dirNode.name}`
 
     // 子
     const makeNextSpaces = () => {
