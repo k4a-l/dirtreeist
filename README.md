@@ -22,7 +22,9 @@ https://www.k4a.me/tools/dirtreeist
 
 ## Example
 
-### Input
+### Basic
+
+#### Input
 
 ```markdown
 - /components
@@ -34,7 +36,8 @@ https://www.k4a.me/tools/dirtreeist
 　- parser.ts
 ```
 
-### Output
+#### Output
+
 
 ```text
 ├─/components
@@ -44,6 +47,67 @@ https://www.k4a.me/tools/dirtreeist
 └─/utils
 　　└─converter.ts
 　　└─parser.ts
+```
+
+### Sequential listings
+
+Consecutive lists are connected.
+#### Input
+```
+- a
+  - b
+  - c
+- d
+
+- 1
+  - 2
+    - 3
+      - 4
+```
+#### Output
+```
+├─ a
+│　├─ b
+│　└─ c
+├─ d
+└─ 1
+　　└─ 2
+　　　　└─ 3
+　　　　　　└─ 4
+```
+
+### Another element comes in between
+
+If another element is sandwiched in between, a "only" split lists is output.
+
+#### Input
+```dirtree
+- a
+  - b
+  - c
+- d
+
+sometext
+
+- 1
+  - 2
+    - 3
+      - 4
+```
+
+
+#### Output
+```
+├─ a
+│　├─ b
+│　└─ c
+└─ d
+```
+```
+└─ 1
+　　└─ 2
+　　　　└─ 3
+　　　　　　└─ 4
 ```
 
 ## How to use
