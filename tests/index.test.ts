@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import dirtreest from '../src/index'
+import dirtreest from 'index'
 
 import {
   multipleTop,
@@ -49,7 +49,9 @@ describe('options', () => {
   })
 
   it('spaceSize:10', () => {
-    expect(dirtreest(normalList, { spaceSize: 10 })).toStrictEqual([spaceSize10])
+    expect(dirtreest(normalList, { spaceSize: 10 })).toStrictEqual([
+      spaceSize10,
+    ])
   })
 
   it('full option', () => {

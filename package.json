@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "vite",
     "clean": "rm -rf ./dist/ ",
-    "build:esm": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "build:esm": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "build:cjs": "rollup -c rollup.config.js",
     "build": "yarn clean && yarn build:esm && yarn build:cjs",
     "test": "vitest",

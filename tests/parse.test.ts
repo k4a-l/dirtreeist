@@ -1,5 +1,5 @@
-import { DirTree } from '../src/types'
-import { parse } from '../src/modules/parse'
+import { DirTree } from 'types'
+import { parse } from 'modules/parse'
 
 import { describe, it, expect } from 'vitest'
 
