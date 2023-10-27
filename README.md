@@ -4,7 +4,7 @@ Create a directory Structure Diagram from a markdown lists.
 
 ## Installation
 
-#### tarn
+#### yarn
 
 ```shell
 yarn add @k4a_l/dirtreeist
