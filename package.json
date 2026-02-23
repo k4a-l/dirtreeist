@@ -41,5 +41,9 @@
   "dependencies": {
     "mdast-util-from-markdown": "^1.2.0",
     "ts-dedent": "^2.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:k4a-l/dirtreeist.git"
   }
 }
