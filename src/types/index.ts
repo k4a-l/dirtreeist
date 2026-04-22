@@ -7,12 +7,18 @@ type DirNode = {
 
 type DirTree = DirNode[]
 
-type OptionsBase = {
+type ParseOptions = {
+  keepMarkdown: boolean
+}
+
+type ConvertOptions = {
   treeType: typeof treeTypeValues[number]
   emptyBeforeUpperHierarche: boolean
   spaceBeforeName: boolean
   spaceSize: number
 }
+
+type OptionsBase = ParseOptions & ConvertOptions
 
 type SymbolSet = {
   vertical: string
@@ -24,4 +30,4 @@ type SymbolSet = {
 
 type Options = Partial<OptionsBase>
 
-export type { DirNode, DirTree, Options, OptionsBase, SymbolSet }
+export type { DirNode, DirTree, Options, OptionsBase, SymbolSet, ParseOptions, ConvertOptions }

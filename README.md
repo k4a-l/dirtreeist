@@ -206,6 +206,7 @@ type Options = {
   emptyBeforeUpperHierarche?: boolean
   spaceBeforeName?: boolean
   spaceSize?: number
+  keepMarkdown?: boolean
 }
 ```
 
@@ -290,4 +291,22 @@ default:`2`
 └──/utils
 　　　└──converter.ts
 　　　└──parser.ts
+```
+
+#### keepMarkdown : boolean
+
+default:`false`
+
+Whether to keep markdown notation in lists.
+
+##### true
+
+```text
+Input:
+- **bold**
+- [google](https://google.com)
+
+Output:
+├─**bold**
+└─[google](https://google.com)
 ```

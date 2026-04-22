@@ -64,4 +64,28 @@ describe('success', () => {
   it('No list ', () => {
     expect(parse(noList)).toStrictEqual([])
   })
+
+  it('keepMarkdown: true', () => {
+    const md = '- **bold**\n- *italic*'
+    const expected: DirTree = [
+      { name: '**bold**', children: [] },
+      { name: '*italic*', children: [] },
+    ]
+    expect(parse(md, { keepMarkdown: true })).toStrictEqual([expected])
+  })
+
+  it('keepMarkdown: link', () => {
+    const md = '- [Google](https://google.com)'
+    const expected: DirTree = [{ name: '[Google](https://google.com)', children: [] }]
+    expect(parse(md, { keepMarkdown: true })).toStrictEqual([expected])
+  })
+
+  it('keepMarkdown: false (default)', () => {
+    const md = '- **bold** item\n- [Google](https://google.com)'
+    const expected: DirTree = [
+      { name: 'bold item', children: [] },
+      { name: 'Google', children: [] },
+    ]
+    expect(parse(md)).toStrictEqual([expected])
+  })
 })

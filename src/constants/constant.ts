@@ -31,6 +31,7 @@ const defaultOptions: OptionsBase = {
   spaceBeforeName: false,
   spaceSize: 2,
   emptyBeforeUpperHierarche: false,
+  keepMarkdown: false,
 }
 
 const treeTypeValues = ['normal', 'bold', 'ascii'] as const

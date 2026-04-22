@@ -23,6 +23,11 @@ const optionGuard = (value: any, defaultValue: any, key: keyof OptionsBase) => {
     return value
   }
 
+  if (key === 'keepMarkdown') {
+    if (typeof value !== 'boolean') return defaultValue
+    return value
+  }
+
   return defaultValue
 }
 

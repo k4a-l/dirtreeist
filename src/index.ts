@@ -5,7 +5,7 @@ import { DirTree, Options } from './types/index'
 import { symbolSets } from './constants/constant.js'
 
 const dirtreeist = (markdown: string, option?: Options) => {
-  return parse(markdown).map((dirtree) => convert(dirtree, option))
+  return parse(markdown, option).map((dirtree) => convert(dirtree, option))
 }
 
 export { parse, convert, symbolSets }

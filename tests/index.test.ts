@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import dedent from 'ts-dedent'
 
 import dirtreest from 'index'
 
@@ -63,5 +64,32 @@ describe('options', () => {
         emptyBeforeUpperHierarche: true,
       })
     ).toStrictEqual([fullOption])
+  })
+
+  it('keepMarkdown: true', () => {
+    const md = dedent`
+      - **bold**
+        - *italic*
+    `
+    const expected = dedent`
+      **bold**
+      └─*italic*
+    `
+    expect(dirtreest(md, { keepMarkdown: true })).toStrictEqual([expected])
+  })
+
+  it('keepMarkdown: link', () => {
+    const md = '- [Google](https://google.com)'
+    const expected = '[Google](https://google.com)'
+    expect(dirtreest(md, { keepMarkdown: true })).toStrictEqual([expected])
+  })
+
+  it('keepMarkdown: false (default)', () => {
+    const md = '- **bold** item\n- [Google](https://google.com)'
+    const expected = dedent`
+      ├─bold item
+      └─Google
+    `
+    expect(dirtreest(md)).toStrictEqual([expected])
   })
 })
