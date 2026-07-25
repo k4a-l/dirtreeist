@@ -7,7 +7,11 @@ permissions:
   contents: write
   id-token: write
 jobs:
+  check:
+    uses: ./.github/workflows/check.yml
+
   publish:
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,10 +19,16 @@ jobs:
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm run ci
-      - run: npm run build
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: build
+        run: npm run build
       - run: npm publish
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          generate_release_notes: true
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+env:
+  # https://typicode.github.io/husky/guide.html#with-env-variables
+  HUSKY: '0'
