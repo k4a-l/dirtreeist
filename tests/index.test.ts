@@ -39,7 +39,7 @@ describe('options', () => {
 
   it('emptyLineBeforeUpperHierarchy:true', () => {
     expect(
-      dirtreest(normalList, { emptyBeforeUpperHierarche: true })
+      dirtreest(normalList, { emptyBeforeUpperHierarchy: true })
     ).toStrictEqual([emptyLineBeforeUpperHierarchy])
   })
 
@@ -61,7 +61,7 @@ describe('options', () => {
         treeType: 'bold',
         spaceSize: 4,
         spaceBeforeName: true,
-        emptyBeforeUpperHierarche: true,
+        emptyBeforeUpperHierarchy: true,
       })
     ).toStrictEqual([fullOption])
   })

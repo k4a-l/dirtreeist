@@ -1,4 +1,8 @@
-import { defaultOptions, treeTypeValues } from '../constants/constant.js'
+import {
+  defaultOptions,
+  treeTypeValues,
+  memoAlignValues,
+} from '../constants/constant.js'
 import { Options, OptionsBase } from '../types'
 
 const optionGuard = (value: any, defaultValue: any, key: keyof OptionsBase) => {
@@ -8,7 +12,7 @@ const optionGuard = (value: any, defaultValue: any, key: keyof OptionsBase) => {
     return value
   }
 
-  if (key === 'emptyBeforeUpperHierarche') {
+  if (key === 'emptyBeforeUpperHierarchy') {
     if (typeof value !== 'boolean') return defaultValue
     return value
   }
@@ -26,6 +30,53 @@ const optionGuard = (value: any, defaultValue: any, key: keyof OptionsBase) => {
   if (key === 'keepMarkdown') {
     if (typeof value !== 'boolean') return defaultValue
     return value
+  }
+
+  if (key === 'delimiter') {
+    if (value === false) return false
+    if (typeof value !== 'string') return defaultValue
+    if (value.length === 0) return defaultValue
+    return value
+  }
+
+  if (key === 'memoAlign') {
+    if (!memoAlignValues.includes(value)) return defaultValue
+    return value
+  }
+
+  if (key === 'memoGap') {
+    if (typeof value !== 'number') return defaultValue
+    if (value < 0) return defaultValue
+    return Math.floor(value)
+  }
+
+  if (key === 'memoMaxColumn') {
+    if (value === false) return false
+    if (typeof value !== 'number') return defaultValue
+    if (value < 1) return defaultValue
+    return Math.floor(value)
+  }
+
+  if (key === 'cjkFont') {
+    if (typeof value !== 'boolean') return defaultValue
+    return value
+  }
+
+  if (key === 'noteAlignToMemo') {
+    if (typeof value !== 'boolean') return defaultValue
+    return value
+  }
+
+  if (key === 'noteBullet') {
+    // 空文字は「記号なし」の指定として有効
+    if (typeof value !== 'string') return defaultValue
+    return value
+  }
+
+  if (key === 'noteIndentSize') {
+    if (typeof value !== 'number') return defaultValue
+    if (value < 0) return defaultValue
+    return Math.floor(value)
   }
 
   return defaultValue
