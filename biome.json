@@ -1,0 +1,30 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.5/schema.json",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"includes": ["src/**/*", "test/**/*", "*.md", "**/*.json"],
+		"ignoreUnknown": false
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"correctness": {
+				"noUnusedVariables": "info",
+				"noUnusedFunctionParameters": "info",
+				"noUnusedImports": {
+					"level": "warn",
+					"fix": "safe",
+					"options": {}
+				}
+			}
+		}
+	}
+}
