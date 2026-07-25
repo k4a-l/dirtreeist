@@ -18,10 +18,9 @@
     "clean": "rm -rf ./dist/ ",
     "build:esm": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "build:cjs": "rollup -c rollup.config.js",
-    "build": "yarn clean && yarn build:esm && yarn build:cjs",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "deploy": "yarn build && yarn publish --access=public"
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^22.0.2",

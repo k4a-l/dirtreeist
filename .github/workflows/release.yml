@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - run: npm run ci
+      - run: npm run build
       - run: npm publish
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
