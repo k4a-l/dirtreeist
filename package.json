@@ -15,7 +15,6 @@
 	"scripts": {
 		"tsc": "tsc -noEmit",
 		"tsc:watch": "tsc -noEmit --watch",
-		"dev": "vite",
 		"build": "tsdown",
 		"test": "vitest",
 		"coverage": "vitest run --coverage",
