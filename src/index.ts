@@ -1,45 +1,44 @@
-import { parse } from './modules/parse.js'
-import { convert, layout, lineToString } from './modules/convert.js'
-
 import {
-  DirNode,
-  DirTree,
-  NoteNode,
-  Line,
-  NodeLine,
-  NoteLine,
-  EmptyLine,
-  Options,
-} from './types/index'
-import {
-  symbolSets,
-  defaultOptions,
-  treeTypeValues,
-  memoAlignValues,
-} from './constants/constant.js'
+	defaultOptions,
+	memoAlignValues,
+	symbolSets,
+	treeTypeValues,
+} from "./constants/constant.js";
+import { convert, layout, lineToString } from "./modules/convert.js";
+import { parse } from "./modules/parse.js";
+import type {
+	DirNode,
+	DirTree,
+	EmptyLine,
+	Line,
+	NodeLine,
+	NoteLine,
+	NoteNode,
+	Options,
+} from "./types/index";
 
 const dirtreeist = (markdown: string, option?: Options) => {
-  return parse(markdown, option).map((dirtree) => convert(dirtree, option))
-}
+	return parse(markdown, option).map((dirtree) => convert(dirtree, option));
+};
 
 export {
-  parse,
-  convert,
-  layout,
-  lineToString,
-  symbolSets,
-  defaultOptions,
-  treeTypeValues,
-  memoAlignValues,
-}
-export default dirtreeist
+	convert,
+	defaultOptions,
+	layout,
+	lineToString,
+	memoAlignValues,
+	parse,
+	symbolSets,
+	treeTypeValues,
+};
+export default dirtreeist;
 export type {
-  DirNode,
-  DirTree,
-  NoteNode,
-  Line,
-  NodeLine,
-  NoteLine,
-  EmptyLine,
-  Options,
-}
+	DirNode,
+	DirTree,
+	EmptyLine,
+	Line,
+	NodeLine,
+	NoteLine,
+	NoteNode,
+	Options,
+};

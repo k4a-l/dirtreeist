@@ -4,7 +4,6 @@ Create a directory Structure Diagram from a markdown lists.
 
 ## Installation
 
-
 ```shell
 yarn add @k4a_l/dirtreeist
 npm install @k4a_l/dirtreeist
@@ -238,7 +237,7 @@ That padding only holds in monospace. If names and memos get different fonts or 
 
 ### Type
 
-See [src/types/index.ts](src/types/index.ts) 
+See [src/types/index.ts](src/types/index.ts)
 
 ### Options
 
