@@ -1,12 +1,14 @@
 {
 	"name": "@k4a_l/dirtreeist",
-	"version": "0.4.0",
+	"version": "1.0.0",
 	"main": "./dist/index.js",
 	"exports": {
 		".": "./dist/index.js"
 	},
 	"types": "./dist/index.d.ts",
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"author": "kasahala",
 	"license": "MIT",
 	"type": "module",
