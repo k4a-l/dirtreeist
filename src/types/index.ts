@@ -1,4 +1,4 @@
-import type { memoAlignValues, treeTypeValues } from "../constants/constant.js";
+import type { memoAlignValues, treeTypeValues } from "../constants/constant";
 
 /**
  * 名前を持たずメモだけの行(`- -- xxx`)。

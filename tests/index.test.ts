@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import dedent from 'ts-dedent'
 
-import dirtreest from 'index'
+import dirtreeist from '../src/index'
 
 import {
   multipleTop,
@@ -18,46 +18,46 @@ import { normalList } from './resource/markdown'
 
 describe('multiple top', () => {
   it('success', () => {
-    expect(dirtreest(normalList)).toStrictEqual([multipleTop])
+    expect(dirtreeist(normalList)).toStrictEqual([multipleTop])
   })
 })
 
 describe('options', () => {
   it('treetype:1', () => {
-    expect(dirtreest(normalList, { treeType: 'normal' })).toStrictEqual([
+    expect(dirtreeist(normalList, { treeType: 'normal' })).toStrictEqual([
       multipleTop,
     ])
   })
 
   it('treetype:2', () => {
-    expect(dirtreest(normalList, { treeType: 'bold' })).toStrictEqual([bold])
+    expect(dirtreeist(normalList, { treeType: 'bold' })).toStrictEqual([bold])
   })
 
   it('treetype:3', () => {
-    expect(dirtreest(normalList, { treeType: 'ascii' })).toStrictEqual([ascii])
+    expect(dirtreeist(normalList, { treeType: 'ascii' })).toStrictEqual([ascii])
   })
 
   it('emptyLineBeforeUpperHierarchy:true', () => {
     expect(
-      dirtreest(normalList, { emptyBeforeUpperHierarchy: true })
+      dirtreeist(normalList, { emptyBeforeUpperHierarchy: true })
     ).toStrictEqual([emptyLineBeforeUpperHierarchy])
   })
 
   it('spaceBeforeName:true', () => {
-    expect(dirtreest(normalList, { spaceBeforeName: true })).toStrictEqual([
+    expect(dirtreeist(normalList, { spaceBeforeName: true })).toStrictEqual([
       spaceBeforeName,
     ])
   })
 
   it('spaceSize:10', () => {
-    expect(dirtreest(normalList, { spaceSize: 10 })).toStrictEqual([
+    expect(dirtreeist(normalList, { spaceSize: 10 })).toStrictEqual([
       spaceSize10,
     ])
   })
 
   it('full option', () => {
     expect(
-      dirtreest(normalList, {
+      dirtreeist(normalList, {
         treeType: 'bold',
         spaceSize: 4,
         spaceBeforeName: true,
@@ -75,13 +75,13 @@ describe('options', () => {
       **bold**
       └─*italic*
     `
-    expect(dirtreest(md, { keepMarkdown: true })).toStrictEqual([expected])
+    expect(dirtreeist(md, { keepMarkdown: true })).toStrictEqual([expected])
   })
 
   it('keepMarkdown: link', () => {
     const md = '- [Google](https://google.com)'
     const expected = '[Google](https://google.com)'
-    expect(dirtreest(md, { keepMarkdown: true })).toStrictEqual([expected])
+    expect(dirtreeist(md, { keepMarkdown: true })).toStrictEqual([expected])
   })
 
   it('keepMarkdown: false (default)', () => {
@@ -90,6 +90,6 @@ describe('options', () => {
       ├─bold item
       └─Google
     `
-    expect(dirtreest(md)).toStrictEqual([expected])
+    expect(dirtreeist(md)).toStrictEqual([expected])
   })
 })

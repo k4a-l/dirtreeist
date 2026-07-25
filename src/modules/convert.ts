@@ -1,4 +1,4 @@
-import { defaultOptions, symbolSets } from "../constants/constant.js";
+import { defaultOptions, symbolSets } from "../constants/constant";
 import type {
 	ConvertOptions,
 	DirNode,
@@ -7,9 +7,9 @@ import type {
 	NoteNode,
 	Options,
 	SymbolSet,
-} from "../types/index";
-import { buildOption } from "./options.js";
-import { ambiguousWidthOf, stringWidth, stripMarkdown } from "./width.js";
+} from "../types";
+import { buildOption } from "./options";
+import { ambiguousWidthOf, stringWidth, stripMarkdown } from "./width";
 
 /**
  * 揃えを計算する前の1行。groupは揃えの単位。

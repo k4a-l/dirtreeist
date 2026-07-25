@@ -1,4 +1,4 @@
-import { DirTree } from 'types'
+import { DirTree } from '../../src/types'
 
 export const dirTree: DirTree = [
   {

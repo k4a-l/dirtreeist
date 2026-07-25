@@ -1,5 +1,4 @@
-import { DirTree } from 'types'
-import { parse } from 'modules/parse'
+import { DirTree } from '../src/types'
 
 import { describe, it, expect } from 'vitest'
 
@@ -10,6 +9,7 @@ import {
   noList,
   normalList,
 } from './resource/markdown'
+import { parse } from '../src/modules/parse'
 
 const result: DirTree = [
   {

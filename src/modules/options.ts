@@ -1,4 +1,4 @@
-import { memoAlignValues, treeTypeValues } from "../constants/constant.js";
+import { memoAlignValues, treeTypeValues } from "../constants/constant";
 import type { Options, OptionsBase } from "../types";
 
 /** 検証を通らなかったら既定値に落とす。valueは利用者から来る未検証の値。 */

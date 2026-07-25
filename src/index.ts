@@ -3,9 +3,9 @@ import {
 	memoAlignValues,
 	symbolSets,
 	treeTypeValues,
-} from "./constants/constant.js";
-import { convert, layout, lineToString } from "./modules/convert.js";
-import { parse } from "./modules/parse.js";
+} from "./constants/constant";
+import { convert, layout, lineToString } from "./modules/convert";
+import { parse } from "./modules/parse";
 import type {
 	DirNode,
 	DirTree,
@@ -15,7 +15,7 @@ import type {
 	NoteLine,
 	NoteNode,
 	Options,
-} from "./types/index";
+} from "./types";
 
 const dirtreeist = (markdown: string, option?: Options) => {
 	return parse(markdown, option).map((dirtree) => convert(dirtree, option));
